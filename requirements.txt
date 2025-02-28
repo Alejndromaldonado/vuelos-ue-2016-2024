@@ -1,7 +1,5 @@
-Babel==2.14.0
 dash==2.18.2
 dash_bootstrap_components==1.7.1
-numpy==1.23.5
 pandas==2.2.3
 gunicorn
 dash-tools
