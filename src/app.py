@@ -13,7 +13,7 @@ from datetime import timedelta
 # importar datos, limpiar y definir variables
 # ----------------------------------------------------------------------------
 # ID del archivo en Google Drive  
-file_id = "1rgmE9JT3dyPMW9_-5roJLuITKXaS6Qpd"  
+file_id = "1RFhMYqSZQwh3UsZHZslut-Wlcw0NIxyM"  
 csv_url = f"https://drive.google.com/uc?id={file_id}"  
 
 # Leer el CSV en bloques de 10,000 filas  
@@ -36,6 +36,8 @@ dff_clean = dff_toclean.copy()
 # Variables
 fecha_max= dff_clean["FLT_DATE"].max()
 fecha_min= dff_clean["FLT_DATE"].min()
+year_max= dff_clean["YEAR"].max()
+year_min= dff_clean["YEAR"].min()
 hoy = datetime.date.today()
 data_sorce ="https://ansperformance.eu/"
 logo_link = "https://upload.wikimedia.org/wikipedia/commons/0/0a/ANS_logo.png"
@@ -85,7 +87,7 @@ airport_traffic.sort_values("MONTH_MON", inplace=True)
 fig_linea_tiempo = px.line(airport_traffic, 
                 x="MONTH_MON",
                 y="FLT_TOT_1", 
-                title="Cantidad de Vuelos por Mes Acumulados (2016-2024)",
+                title=f"Cantidad de Vuelos por Mes Acumulados ({year_min}-{year_max})",
                 labels={"MONTH_MON": "Mes", "FLT_TOT_1": "Total de Vuelos"})
 fig_linea_tiempo.update_layout(paper_bgcolor="rgb(50, 56, 62)",
                   plot_bgcolor="rgb(50, 56, 62)",
@@ -152,7 +154,7 @@ fig_scatter_map = px.scatter_map(data_map_grouped,
                                     color="FLT_TOT_1", 
                                     size="FLT_TOT_1",
                                     hover_name="STATE_NAME", 
-                                    title="Total de Vuelos por País (2016-2024)",
+                                    title=f"Total de Vuelos por País ({year_min}-{year_max})",
                                     color_continuous_scale="ylgn",
                                     size_max=25,
                                     zoom=2,
@@ -177,7 +179,7 @@ fig_bar_top10_aerop = px.bar(top_airports,
                      x="FLT_TOT_1", 
                      #color="YEAR", 
                      orientation="h", 
-                     title="Top 10 Aeropuertos con Mayor Tráfico Acumulado del 2016 al 2024",
+                     title=f"Top 10 Aeropuertos con Mayor Tráfico Acumulado del {year_min} al {year_max}",
                      labels={"APT_NAME": "Aeropuerto", "FLT_TOT_1": "Total de Vuelos"})
 
 fig_bar_top10_aerop.update_layout(paper_bgcolor="rgb(50, 56, 62)",
@@ -228,14 +230,14 @@ fig_week_pattern.update_layout(paper_bgcolor="rgb(50, 56, 62)",
 # Definir la App y su diseño
 # ----------------------------------------------------------------------------------------
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SLATE])
-server = app.server
+#server = app.server
 
 # Layout del dashboard
 app.layout = dbc.Container([
     # Encabezado
     dbc.Row([
         dbc.Col(html.Img(src="https://i.postimg.cc/5NNHf0Qq/flag-of-europe-european-union-eu-flag-in-design-shape-vector-removebg-preview.png", height="75px"), width="auto"),
-        dbc.Col(html.H1("Europa en el Aire: Análisis del Trafico Aereo 2016-2024", className="text-center", style={"color": "rgb(240, 255, 255)","font-size": "65px", "margin": "10px 0px 0px 40px"}), width=10),
+        dbc.Col(html.H1(f"Europa en el Aire: Análisis del Trafico Aereo {year_min}-{year_max}", className="text-center", style={"color": "rgb(240, 255, 255)","font-size": "65px", "margin": "10px 0px 0px 40px"}), width=10),
         dbc.Col(children=[
             html.Span(children=[html.H6("Elaborado por: "),
                                 html.B("Alejandro Maldonado "),html.Br(),
@@ -282,7 +284,7 @@ app.layout = dbc.Container([
             className="date-picker-range",
             style=date_picker_style
         ), width=6),
-             dbc.Tooltip("Elige un rango de fechas para contar el numero de vuelos por país.",
+             dbc.Tooltip(f"Elige un rango de fechas entre {year_min} y {year_max} para contar el numero de vuelos por país.",
                          target="date-picker", placement="right"),
     ], className="mb-4"),
     
