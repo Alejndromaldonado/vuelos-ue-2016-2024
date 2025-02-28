@@ -230,7 +230,7 @@ fig_week_pattern.update_layout(paper_bgcolor="rgb(50, 56, 62)",
 # Definir la App y su diseño
 # ----------------------------------------------------------------------------------------
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SLATE])
-server = app.server
+#server = app.server
 
 # Layout del dashboard
 app.layout = dbc.Container([
@@ -365,6 +365,7 @@ def update_line_plot(selection):
 )
 def update_map_plot(start_date, end_date):
     df_map_to_filter = data_map.copy()
+    df_map_to_filter["FLT_DATE"] = pd.to_datetime(df_map_to_filter["FLT_DATE"], errors="coerce")
     
     if not start_date or not end_date:
         return fig_scatter_map
@@ -372,8 +373,6 @@ def update_map_plot(start_date, end_date):
         
         start_date = pd.to_datetime(start_date)
         end_date = pd.to_datetime(end_date) + timedelta(days=1)
-            
-        data_map
         
         dff_clean_map_filtered = df_map_to_filter[(df_map_to_filter["FLT_DATE"] >= start_date) & (df_map_to_filter["FLT_DATE"] <= end_date)]
         # agrupar por ISO_A3 y contar los vuelos
@@ -453,6 +452,6 @@ def capture_hover_data(hoverData):
 # Ejecutar la aplicación
 # ----------------------------------------------------------------------------------
 if __name__ == "__main__":
-    app.run_server(host="0.0.0.0", port=8080, debug=False)
+    app.run_server(debug=True, port=8888)# ,host="0.0.0.0", port=8080, debug=False)
    
 
