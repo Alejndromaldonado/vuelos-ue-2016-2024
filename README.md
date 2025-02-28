@@ -14,7 +14,7 @@ Este repositorio contiene un dashboard interactivo desarrollado con **Dash y Plo
 Accede al dashboard en línea:  
 🔗 **[Dashboard en Render](https://hall-inhabitant-tooth-tznu.onrender.com/)**  
 
-<img src="hhttps://github.com/Alejndromaldonado/vuelos-ue-2016-2024/blob/main/Vuelos_dashboard.gif?raw=true" width="600">
+![Tablero](imagenes/Dashboard.png)
 
 
 ---
