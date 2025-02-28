@@ -3,4 +3,4 @@ dash_bootstrap_components
 pandas
 gunicorn
 dash-tools
-ipython
+ipython 
