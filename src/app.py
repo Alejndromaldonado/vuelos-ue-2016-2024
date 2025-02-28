@@ -27,8 +27,8 @@ dff_toclean = df_raw.copy()
 # convertir la columna FLT_DATE to datetime
 dff_toclean.loc[:,"FLT_DATE"] = pd.to_datetime(dff_toclean["FLT_DATE"])
 # convertir YEAR y MONTH_NUM a string
-dff_toclean.loc[:,"YEAR"] = dff_toclean["YEAR"].astype(str)
-dff_toclean.loc[:,"MONTH_NUM"] = dff_toclean["MONTH_NUM"].astype(str)
+dff_toclean.loc[:,"YEAR"] = dff_toclean["YEAR"].astype(int).astype(str)
+dff_toclean.loc[:,"MONTH_NUM"] = dff_toclean["MONTH_NUM"].astype(int).astype(str)
 # Eliminar las columnas que no necesitamos
 dff_toclean.drop(["FLT_DEP_IFR_2", "FLT_ARR_IFR_2", "FLT_TOT_IFR_2"], axis=1, inplace=True)
 dff_clean = dff_toclean.copy()
