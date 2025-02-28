@@ -230,7 +230,7 @@ fig_week_pattern.update_layout(paper_bgcolor="rgb(50, 56, 62)",
 # Definir la App y su diseño
 # ----------------------------------------------------------------------------------------
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SLATE])
-#server = app.server
+server = app.server
 
 # Layout del dashboard
 app.layout = dbc.Container([
@@ -452,6 +452,6 @@ def capture_hover_data(hoverData):
 # Ejecutar la aplicación
 # ----------------------------------------------------------------------------------
 if __name__ == "__main__":
-    app.run_server(debug=True, port=8888)# ,host="0.0.0.0", port=8080, debug=False)
+    app.run_server(host="0.0.0.0", port=8080, debug=False)
    
 
