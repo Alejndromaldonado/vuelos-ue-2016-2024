@@ -1,18 +1,11 @@
 import pandas as pd
-import numpy as np
-import os
 import datetime
 import plotly.express as px
-import plotly.graph_objects as go
 import dash
 from dash import dcc, html, dash_table
-from dash.dash_table import DataTable, FormatTemplate
 from dash.dependencies import Input, Output
-import re
-from plotly.subplots import make_subplots
 from datetime import timedelta
 import dash_bootstrap_components as dbc
-from babel.numbers import format_number
 from datetime import timedelta
 
 
