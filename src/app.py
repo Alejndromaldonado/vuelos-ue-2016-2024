@@ -12,10 +12,15 @@ from datetime import timedelta
 
 # importar datos, limpiar y definir variables
 # ----------------------------------------------------------------------------
-file_id = "1rgmE9JT3dyPMW9_-5roJLuITKXaS6Qpd"
-# URL especial para descargar el archivo CSV
-csv_url = f"https://drive.google.com/uc?id={file_id}"
-df_raw = pd.read_csv(csv_url)
+# ID del archivo en Google Drive  
+file_id = "1rgmE9JT3dyPMW9_-5roJLuITKXaS6Qpd"  
+csv_url = f"https://drive.google.com/uc?id={file_id}"  
+
+# Leer el CSV en bloques de 10,000 filas  
+df_chunks = pd.read_csv(csv_url, chunksize=10000)  
+
+# Unir los bloques en un solo DataFrame  
+df_raw = pd.concat(df_chunks, ignore_index=True) 
 dff_toclean = df_raw.copy()
 
 # Limpieza
