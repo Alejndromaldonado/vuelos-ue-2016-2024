@@ -13,7 +13,7 @@ from datetime import timedelta
 # importar datos, limpiar y definir variables
 # ----------------------------------------------------------------------------
 # ID del archivo en Google Drive  
-file_id = "1RFhMYqSZQwh3UsZHZslut-Wlcw0NIxyM"  
+file_id = "1mH6RtH603uEPakHg1oPJPD6xHphYQJsY"  
 csv_url = f"https://drive.google.com/uc?id={file_id}"  
 
 # Leer el CSV en bloques de 10,000 filas  
