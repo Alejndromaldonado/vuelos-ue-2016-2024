@@ -231,6 +231,7 @@ fig_week_pattern.update_layout(paper_bgcolor="rgb(50, 56, 62)",
 # ----------------------------------------------------------------------------------------
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SLATE])
 server = app.server
+app.title = "Europa en el Aire"
 
 # Layout del dashboard
 app.layout = dbc.Container([
