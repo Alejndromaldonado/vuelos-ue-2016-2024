@@ -291,13 +291,13 @@ app.layout = dbc.Container([
     
     # Gráficos
     dbc.Row([
-        dbc.Col(dcc.Graph(id="line_chart", figure=fig_linea_tiempo, className="grafico-style", style={"border-radius": "10px", "overflow": "hidden"}), width=6),  # Gráfico de línea de tiempo
-        dbc.Col(dcc.Graph(id="map_chart", figure=fig_scatter_map, className="grafico-style", style={"border-radius": "10px", "overflow": "hidden"}), width=6)    # Gráfico de mapa
+        dbc.Col(dcc.Graph(id="line_chart", figure=fig_linea_tiempo, className="grafico-style", style={"border-radius": "10px", "overflow": "hidden"}), width=12, md=6),  # Gráfico de línea de tiempo
+        dbc.Col(dcc.Graph(id="map_chart", figure=fig_scatter_map, className="grafico-style", style={"border-radius": "10px", "overflow": "hidden"}), width=12, md=6)    # Gráfico de mapa
     ], className="mb-4"),
     
     dbc.Row([
-        dbc.Col(dcc.Graph(id="bar_chart_1", figure=fig_bar_top10_aerop, className="grafico-style", style={"border-radius": "10px", "overflow": "hidden"}), width=6),  # Primer gráfico de barras
-        dbc.Col(dcc.Graph(id="bar_chart_2", figure=fig_week_pattern, className="grafico-style", style={"border-radius": "10px", "overflow": "hidden"}), width=6)   # Segundo gráfico de barras
+        dbc.Col(dcc.Graph(id="bar_chart_1", figure=fig_bar_top10_aerop, className="grafico-style", style={"border-radius": "10px", "overflow": "hidden"}), width=12, md=6),  # Primer gráfico de barras
+        dbc.Col(dcc.Graph(id="bar_chart_2", figure=fig_week_pattern, className="grafico-style", style={"border-radius": "10px", "overflow": "hidden"}), width=12, md=6)   # Segundo gráfico de barras
     ], className="mb-4"),
 
 ], fluid=True)
